@@ -28,6 +28,8 @@ public class IngredientInDishMapper {
       IngredientInDish ingredientInDish = mapper.readValue(mapper.writeValueAsString(ingredientInDishRequest), IngredientInDish.class);
       Dish dish = dishRepository.getDishById(dishId);
       Ingredient ingredient = ingredientRepository.getIngredientById(ingredientInDishRequest.ingredientId());
+      ingredientInDish.setIngredient(ingredient);
+      ingredientInDish.setDish(dish);
 
       return ingredientInDish;
     } catch (JsonProcessingException e) {

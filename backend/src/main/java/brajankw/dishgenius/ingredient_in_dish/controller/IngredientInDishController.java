@@ -45,7 +45,7 @@ public class IngredientInDishController {
 
   @DeleteMapping("/{dishId}/ingredients/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public IngredientInDish deleteIngredientInDish
+  public void deleteIngredientInDish
       (@PathVariable Long dishId, @PathVariable Long id) {
     log.info("DELETE-request: deleting ingredient from dish with id: {}", dishId);
     ingredientInDishService.deleteByDishIdAndId(dishId, id);

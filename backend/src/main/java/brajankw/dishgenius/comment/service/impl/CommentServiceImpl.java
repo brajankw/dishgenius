@@ -22,6 +22,7 @@ public class CommentServiceImpl implements CommentService {
 
 
   @Override
+  @Transactional
   public CommentResponse addComment(CommentRequest commentRequest) {
     Comment comment = commentMapper.mapRequestToEntity(commentRequest);
 
@@ -29,6 +30,7 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
+  @Transactional
   public CommentResponse updateComment(Long id, CommentRequest commentRequest) {
     if (!commentRepository.existsById(id)) {
 
@@ -61,6 +63,7 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
+  @Transactional
   public void deleteById(Long id) {
     delete(getById(id));
   }

@@ -22,6 +22,7 @@ public class DishServiceImpl implements DishService {
   private final DishMapper dishMapper;
 
   @Override
+  @Transactional
   public DishResponse createDish(DishRequest dishRequest) {
     Dish dish = dishMapper.mapRequestToEntity(dishRequest);
 
@@ -29,6 +30,7 @@ public class DishServiceImpl implements DishService {
   }
 
   @Override
+  @Transactional
   public DishResponse updateDish(Long id, DishRequest dishRequest) {
     dishRepository.checkIfExistById(id);
     Dish dish = dishMapper.mapRequestToEntity(dishRequest);
@@ -53,6 +55,7 @@ public class DishServiceImpl implements DishService {
   }
 
   @Override
+  @Transactional
   public void deleteById(Long id) {
     delete(dishRepository.getDishById(id));
   }

@@ -23,6 +23,7 @@ public class IngredientServiceImpl implements IngredientService {
   private final IngredientMapper ingredientMapper;
 
   @Override
+  @Transactional
   public IngredientResponse addIngredient(IngredientRequest ingredientRequest) {
     Ingredient ingredient = ingredientMapper.mapRequestToEntity(ingredientRequest);
 
@@ -30,6 +31,7 @@ public class IngredientServiceImpl implements IngredientService {
   }
 
   @Override
+  @Transactional
   public IngredientResponse updateIngredient(Long id, IngredientRequest ingredientRequest) {
     if(!ingredientRepository.existsById(id)) {
 

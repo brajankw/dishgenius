@@ -20,6 +20,7 @@ public class IngredientInDishServiceImpl implements IngredientInDishService {
   private final IngredientInDishMapper ingredientInDishMapper;
 
   @Override
+  @Transactional
   public IngredientInDish addIngredientToDish(Long dishId,
                                               IngredientInDishRequest ingredientInDishRequest) {
     IngredientInDish ingredientInDish =
@@ -29,6 +30,7 @@ public class IngredientInDishServiceImpl implements IngredientInDishService {
   }
 
   @Override
+  @Transactional
   public IngredientInDish updateIngredientInDish(Long dishId, Long id,
                                                  IngredientInDishRequest ingredientInDishRequest) {
     checkIfDishHasThisIngredient(dishId, id);
@@ -40,6 +42,7 @@ public class IngredientInDishServiceImpl implements IngredientInDishService {
   }
 
   @Override
+  @Transactional
   public void deleteByDishIdAndId(Long dishId, Long id) {
     IngredientInDish ingredientInDish = getById(id);
     checkIfDishHasThisIngredient(dishId, id);
